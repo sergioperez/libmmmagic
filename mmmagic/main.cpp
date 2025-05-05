@@ -3,9 +3,9 @@
 #include <chrono>
 #include <thread>
 
-#define WINBLOWS
+#define WIN32
 
-#ifndef WINBLOWS
+#ifndef WIN32
 extern int fd;
 #endif
 
@@ -26,7 +26,7 @@ int main (void)
 		std::this_thread::sleep_for(std::chrono::seconds(5));
 		count++;
 	}
-#ifndef WINBLOWS
+#ifndef WIN32
 	close(fd);
 #endif
 	printf("Test complete\n");

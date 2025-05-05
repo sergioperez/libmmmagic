@@ -18,7 +18,7 @@ extern "C" {
 #endif
 
 
-#ifdef WINBLOWS
+#ifdef WIN32
 HANDLE HIDHandle;
 #else
 int fd;

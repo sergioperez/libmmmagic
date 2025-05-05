@@ -1,11 +1,7 @@
 #ifndef PLATFORM_H
 #define PLATFORM_H
 
-
-//COMMENT THIS NEXT LINE OUT OUT FOR LINUX
-#define WINBLOWS
-  
-#ifdef WINBLOWS
+#ifdef WIN32
   #define WIN32_LEAN_AND_MEAN
   #include <windows.h>
   #include <setupapi.h> 

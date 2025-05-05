@@ -30,12 +30,12 @@ static bool __bitValid(int bit)
   return true;
 }
 
-static unsigned char mm_turnON(unsigned char set, int bit)
+unsigned char mm_turnON(unsigned char set, int bit)
 {
   return set |= (1<<bit);
 }
 
-static unsigned char mm_turnOFF(unsigned char set, int bit)
+unsigned char mm_turnOFF(unsigned char set, int bit)
 {
   return set &= ~(1 << bit);
 }

@@ -1,10 +1,16 @@
 cmake_minimum_required(VERSION 3.14)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(libmmmagic)
 
 # Options
 option( MMMAGIC_VERBOSE_LOGGING "Turn on loads of debug text" OFF )
 option( MMMAGIC_BUILD_BLINK_EXE "Build mmmagic_blink.exe" ON )
+
+if(WIN32)
+    add_definitions(-DWIN32)
+endif()
 
 set( CMAKE_C_VISIBILITY_PRESET default )
 set( CMAKE_CXX_VISIBILITY_PRESET default )
@@ -30,6 +36,7 @@ set( MMMAGIC_SRC
 
 # mmmagic.dll
 add_library( mmmagic SHARED ${MMMAGIC_SRC} )
+target_link_libraries(mmmagic PRIVATE udev)
 target_compile_definitions( mmmagic PRIVATE "MMMAGIC_API_EXPORT" )
 target_compile_definitions( mmmagic PUBLIC "WINDBLOWS" )
 if( SIXTY_FOUR_BIT )
@@ -37,6 +44,7 @@ if( SIXTY_FOUR_BIT )
 endif()
 
 add_library( mmmagic_nonthreaded SHARED ${MMMAGIC_SRC} )
+target_link_libraries(mmmagic_nonthreaded PRIVATE udev)
 target_compile_definitions( mmmagic_nonthreaded PRIVATE "MMMAGIC_API_EXPORT" )
 target_compile_definitions( mmmagic_nonthreaded PRIVATE "MMMAGIC_NONTHREADED" )
 target_compile_definitions( mmmagic_nonthreaded PUBLIC "WINDBLOWS" )
@@ -49,8 +57,10 @@ if(MMMAGIC_VERBOSE_LOGGING)
   target_compile_definitions( mmmagic_nonthreaded PUBLIC "DEBUG_VERSION_HID")
 endif()
 
-target_link_libraries( mmmagic PUBLIC hid.lib setupapi.lib )
-target_link_libraries( mmmagic_nonthreaded PUBLIC hid.lib setupapi.lib )
+if (WIN32)
+  target_link_libraries( mmmagic PUBLIC hid.lib setupapi.lib )
+  target_link_libraries( mmmagic_nonthreaded PUBLIC hid.lib setupapi.lib )
+endif()
 
 # Test executable
 if( MMMAGIC_BUILD_BLINK_EXE )

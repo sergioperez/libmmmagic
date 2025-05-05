@@ -10,7 +10,7 @@
 #define Debug
 #endif
 
-#ifdef WINBLOWS
+#ifdef WIN32
 extern HANDLE HIDHandle;
 #else
 extern int fd;
@@ -19,7 +19,7 @@ extern unsigned long buffers;
 
 int minimaid_UpdateInputsWork()
 {
-	#ifdef WINBLOWS
+	#ifdef WIN32
 	DWORD bytes_read;
 	#else
 	int bytes_read;
@@ -35,7 +35,7 @@ int minimaid_UpdateInputsWork()
 	Debug("Attempting to ReadFile\n");
 	
 
-	#ifdef WINBLOWS
+	#ifdef WIN32
 
 	if (ReadFile(HIDHandle, (LPVOID)mm_in_reports, buffers * sizeof(struct mm_InputReport), &bytes_read, NULL) != 0) {
 		reports_read = bytes_read / sizeof(struct mm_InputReport);
@@ -77,7 +77,7 @@ int minimaid_UpdateInputsWork()
 
 int minimaid_SetOutputsWork()
 {
-	#ifdef WINBLOWS
+	#ifdef WIN32
 	DWORD bytes_written;
 	#else
 	int bytes_written;
@@ -98,7 +98,7 @@ int minimaid_SetOutputsWork()
 		mm_out_report->blueled,
 		mm_out_report->enablekbd);
 
-	#ifdef WINBLOWS
+	#ifdef WIN32
 	if (WriteFile(HIDHandle, (LPCVOID)mm_out_report, sizeof(struct mm_OutputReport), (LPDWORD)&bytes_written, NULL) == 0) {
 		Debug("\rError writing: %d - wrote %d bytes\n", GetLastError(), bytes_written);
 		return -1;

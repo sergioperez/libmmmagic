@@ -7,7 +7,7 @@
 typedef void (*mm_minimaid_input_callback_t)(void *ctx);
 typedef void (*mm_minimaid_output_callback_t)(void *ctx);
 
-#ifdef WINBLOWS
+#ifdef WIN32
 //extern mm_minimaid_input_callback_t minimaid_input_callback;
 mm_minimaid_input_callback_t minimaid_input_callback;
 void *minimaid_input_ctx;

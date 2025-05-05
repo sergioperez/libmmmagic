@@ -7,7 +7,7 @@
 
 #include "asyncthreads.h"
 
-#ifdef WINBLOWS
+#ifdef WIN32
 /* Input work thread */
 mm_minimaid_input_callback_t minimaid_input_callback;
 void *minimaid_input_ctx;

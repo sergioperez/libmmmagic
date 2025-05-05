@@ -24,12 +24,16 @@ sudo chmod 666 /dev/hidraw*
 extern "C" {
 #endif
 
-#ifndef MMMAGIC_API
-# ifdef MMMAGIC_API_EXPORT
-#  define MMMAGIC_API __declspec(dllexport)
+#ifdef WIN32
+  #ifndef MMMAGIC_API
+  # ifdef MMMAGIC_API_EXPORT
+  #  define MMMAGIC_API __declspec(dllexport)
+  # else
+  #  define MMMAGIC_API __declspec(dllimport)
+  # endif
+  #endif
 # else
-#  define MMMAGIC_API __declspec(dllimport)
-# endif
+  #define MMMAGIC_API __attribute__((visibility("default")))
 #endif
 
 /*Minimaid bit identifiers*/

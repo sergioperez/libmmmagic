@@ -11,3 +11,13 @@ Feel free to raise issues, I'll fix if I can, I don't have a minimaid to test wi
 
 And if anyone knows the correct licencing / copyright please shout. For now marking it as MIT.
 
+## Building
+
+For Linux, you can use the ITGMania build Dockerfile to avoid installing dependencies: https://github.com/itgmania/itgmania/tree/release/Utils
+
+```
+mkdir build
+cmake -B . ..
+cd build
+make
+```

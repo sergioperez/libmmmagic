@@ -47,7 +47,7 @@ int initDataStructures()
 
 
 
-#ifdef WINBLOWS
+#ifdef WIN32
 
 
 static HANDLE open_device(const char *path, BOOL enumerate)
