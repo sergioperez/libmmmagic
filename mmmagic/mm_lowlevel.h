@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#ifndef WIN32
+  #include <unistd.h>
+#endif
 
 #include "platform.h"
 #include "minimaidhid.h" 

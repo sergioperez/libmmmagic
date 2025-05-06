@@ -28,6 +28,7 @@ BOOL asyncupdates;
 
 
 int minimaid_open_device(BOOL async);
+int findMinimaidUdev(char* devPath);
 
 #ifdef __cplusplus
 }
