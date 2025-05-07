@@ -36,7 +36,9 @@ set( MMMAGIC_SRC
 
 # mmmagic.dll
 add_library( mmmagic SHARED ${MMMAGIC_SRC} )
+if( UNIX )
 target_link_libraries(mmmagic PRIVATE udev)
+endif()
 target_compile_definitions( mmmagic PRIVATE "MMMAGIC_API_EXPORT" )
 target_compile_definitions( mmmagic PUBLIC "WINDBLOWS" )
 if( SIXTY_FOUR_BIT )
@@ -44,7 +46,9 @@ if( SIXTY_FOUR_BIT )
 endif()
 
 add_library( mmmagic_nonthreaded SHARED ${MMMAGIC_SRC} )
+if( UNIX )
 target_link_libraries(mmmagic_nonthreaded PRIVATE udev)
+endif()
 target_compile_definitions( mmmagic_nonthreaded PRIVATE "MMMAGIC_API_EXPORT" )
 target_compile_definitions( mmmagic_nonthreaded PRIVATE "MMMAGIC_NONTHREADED" )
 target_compile_definitions( mmmagic_nonthreaded PUBLIC "WINDBLOWS" )
