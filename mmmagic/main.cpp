@@ -3,9 +3,8 @@
 #include <chrono>
 #include <thread>
 
-#define WIN32
-
 #ifndef WIN32
+#include <unistd.h>
 extern int fd;
 #endif
 

@@ -253,7 +253,7 @@ sem_private    tokenO;
 
 int minimaid_open_device(BOOL async) {
 	char devPath[255];
-	int res=findMinimaidUdev(&devPath);
+	int res=findMinimaidUdev(devPath);
 	if (res==1) return 1;
 	fd = open(devPath, O_RDWR|O_NONBLOCK);
 	if (fd < 0) {
