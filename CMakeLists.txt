@@ -8,10 +8,6 @@ project(libmmmagic)
 option( MMMAGIC_VERBOSE_LOGGING "Turn on loads of debug text" OFF )
 option( MMMAGIC_BUILD_BLINK_EXE "Build mmmagic_blink.exe" ON )
 
-if(WIN32)
-    add_definitions(-DWIN32)
-endif()
-
 set( CMAKE_C_VISIBILITY_PRESET default )
 set( CMAKE_CXX_VISIBILITY_PRESET default )
 
